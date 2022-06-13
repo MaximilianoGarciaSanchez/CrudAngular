@@ -1,0 +1,102 @@
+<nav class="nav-extended">
+<div class="nav-wrapper  teal lighten-2">
+    <a href="/" class="brand-logo center">{{title}}</a>
+    <a data-target="barra-lateral" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="left hide-on-med-and-down">
+      <div *ngIf="user">
+        <li>
+          <img class="circle responsive-img myCircle"
+          src="{{ user.photoUrl }}">
+        </li>
+        <li>
+          <h6>
+           <span class="mySpan MySpanM">{{user.name}}</span> 
+           <span class="mySpan">{{user.email}}</span>
+          </h6>
+        </li>
+      </div>
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+      <div *ngIf = "user; else loggedOut">
+        <li>
+          <a routerLink="/">
+            <i class="fas fa-sm fa-home"> Inicio</i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/empleados">
+            <i class="fas fa-sm fa-users"> Empleados</i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/" (click)="signOut()">
+            <i class="fas fa-sm fa-sign-out-alt"> Salir</i>
+          </a>
+        </li>
+      </div>
+      <!--Opciones para el usuario que no ha iniciado sesión-->
+      <ng-template #loggedOut>
+        <li>
+          <a routerLink="/" (click)="signInWhithFacebook()">
+            Facebook <i class="fab fa-md fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/" (click)="signInWithGoogle()">
+            Google <i class="fab fa-md fa-google"></i>
+          </a>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+
+</nav>
+<ul class="sidenav" id="barra-lateral">
+  <div *ngIf="user">
+    <li>
+      <img class="circle responsive-img myCircleSmall"
+      src="{{ user.photoUrl }}">
+    </li>
+    <li>
+      <h6>
+        <span class="mySpanSmall MySpanMSmall">{{user.name}}</span>
+        <span class="mySpanSmall">{{user.email}}</span>
+      </h6>
+    </li>
+    <li class="divider"></li>
+  </div>
+  <div>
+    <li>
+      <a routerLink="/">
+        Inicio<i class="fas fas-sm fa-home"></i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/empleados">
+        Empleados<i class="fas fa-sm fa-users"></i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/" (click)="signOut">
+        Salir<i class="fas fa-sm fa-sign-out-alt"></i>
+      </a>
+    </li>
+  </div>
+  <ng-template #loggedOutSideNav>
+    <li>
+      <a routerLink="/" (click)="signInWhithFacebook()">
+        Facebook <i class="fab fa-sm fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/" (click)="signInWithGoogle()">
+        Google<i class="fab fa-sm fa-google"></i>
+      </a>
+    </li>
+  </ng-template>
+</ul>
+<!-- Cargamos el componente app empleados en la app principal -->
+<router-outlet></router-outlet>

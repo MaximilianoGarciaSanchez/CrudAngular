@@ -1,0 +1,20 @@
+.myCircle{
+    width: 55%;
+    margin: 5px;
+}
+.myCircleSmall{
+    width: 25%;
+    margin: 5px;
+}
+.mySpan{
+    display: block;
+}
+.mySpanM{
+    margin: 5px;
+}
+.mySpanSmall{
+    display: block;
+}
+.mySpanMSmall{
+    margin: 3px;
+}
